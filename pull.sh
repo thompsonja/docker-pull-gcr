@@ -11,17 +11,19 @@ docker_pull() {
     return 1
   fi
 
-  # location, like us.gcr.io, is everything to the left of the first slash of
-  # the input image, whereas the image name is everything ot the right of the
-  # last slash.
-  local -r location="${INPUT_IMAGE%%/*}"
-  local -r image_name="${INPUT_IMAGE##*/}"
+  if [[ -z "${GOOGLE_PROJECT_ID:-""}" ]]; then
+    echo "GOOGLE_PROJECT_ID env var required (GitHub secret)"
+    return 1
+  fi
+
+  local -r location="${INPUT_GCR_LOCATION:-"gcr.io"}"
+  local -r gcr_image_name="${location}/${GOOGLE_PROJECT_ID}/${INPUT_IMAGE}"
 
   echo "${GCLOUD_SERVICE_ACCOUNT_KEY}" \
     | docker login -u _json_key --password-stdin "https://${location}"
-  docker pull "${INPUT_IMAGE}"
-  docker tag "${INPUT_IMAGE}" "${image_name}"
-  docker rmi "${INPUT_IMAGE}"
+  docker pull "${gcr_image_name}"
+  docker tag "${gcr_image_name}" "${INPUT_IMAGE}"
+  docker rmi "${gcr_image_name}"
 }
 
 docker_pull "$@"
