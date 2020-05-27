@@ -1,0 +1,13 @@
+name: "Pull Image from GCR"
+description: "Pulls a Docker image from GCR"
+author: "Joshua Thompson"
+branding:
+  icon: "download-cloud"
+  color: "purple"
+inputs:
+  image:
+    description: "Full Docker image and tag, like 'gcr.io/<project>/your_image:latest'"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
