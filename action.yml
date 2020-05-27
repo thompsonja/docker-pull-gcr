@@ -6,8 +6,11 @@ branding:
   color: "purple"
 inputs:
   image:
-    description: "Full Docker image and tag, like 'gcr.io/<project>/your_image:latest'"
+    description: "Docker image and tag, like 'your_image:latest'"
     required: true
+  gcr_location:
+    description: "Regional location of the repository, defaults to 'gcr.io'"
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
