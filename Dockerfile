@@ -1,4 +1,4 @@
-FROM google/cloud-sdk
+FROM google/cloud-sdk:300.0.0-alpine
 
 COPY pull.sh /pull.sh
 

@@ -22,7 +22,7 @@ Required Environment Variables:
 
 Simple example:
 ```ylm
-uses: thompsonja/docker-pull-gcr
+uses: thompsonja/docker-pull-gcr@v0.3.0
 with:
   image: "foo_image:latest"
   env:
@@ -32,7 +32,7 @@ with:
 
 Example pulling an image from EU servers:
 ```ylm
-uses: thompsonja/docker-pull-gcr
+uses: thompsonja/docker-pull-gcr@v0.3.0
 with:
   gcr_location: "eu.gcr.io"
   image: "foo_image:latest"
