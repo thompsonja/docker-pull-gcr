@@ -16,7 +16,8 @@ Required Environment Variables:
   GCR. It is recommended that this account should only have the minimum access
   needed to push an image to GCR. Read more [here](https://cloud.google.com/container-registry/docs/advanced-authentication#json-key)
 * GOOGLE\_PROJECT\_ID: The project ID associated with the Google Cloud Project.
-  To find your project ID, follow instructions [here](https://support.google.com/googleapi/answer/7014113?hl=en)
+  To find your project ID, follow instructions [here](https://support.google.com/googleapi/answer/7014113?hl=en).
+  If this is not specified, the service account key will be parsed to obtain it.
 
 ## Examples
 
